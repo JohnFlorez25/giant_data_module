@@ -3,20 +3,19 @@ using DataFrames
 using JSON
 using CSV
 using Plots
-# using Statistics
-# using StatsPlots
-# using StatsBase
-# using Lathe
+using Lathe
+using Statistics
+using StatsPlots
+using StatsBase
+using MultivariateStats
+using LinearAlgebra
+using Distances
 # using Clustering
-# using Distances
-# using Lathe
 # using UMAP
 # using Makie
 # using XLSX
-# using VegaDatasets
-# using MultivariateStats
+# using VegaDataset
 # using RDatasets
-# using LinearAlgebra
 # using ScikitLearn
 # using MLBase
 #gr()
@@ -24,4 +23,5 @@ using Plots
 ## source_files
 
 include("dataPreprocessing.jl")
+include("dataNormalization.jl")
 

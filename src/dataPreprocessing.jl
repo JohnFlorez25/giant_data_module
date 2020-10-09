@@ -1,6 +1,7 @@
 include("graphicsGenerator.jl")
+include("csvGenerator.jl")
 
-# Path with CSV Events GIANT info
+# Path with CSV Events GIANT info to processing
 path = joinpath(@__DIR__, "..", "data", "events_data_09_10_2020.csv")
 
 # Define events Data Frame
@@ -34,3 +35,39 @@ dfUserEvents = DataFrame(USER_ID = eventsDataFrame[!,:userid], EVENT_TYPE = conv
 
 # Calling graphic createEventsUsersGraphic of graphicsGenerator
 createEventsUsersGraphic(dfUserEvents)
+
+#=
+    One Hot Encoding
+    We are going to convert the event type to form multiple numerical columns 
+    - (data normalization) since we have these categories. 
+    This will help us so that the variables can be introduced into 
+    the machine learning algorithms to do a better job of predicting.
+=#
+
+# applying one hot encoding technique
+scaled_feature = Lathe.preprocess.OneHotEncode(dfUserEvents,:EVENT_TYPE)
+
+# Creating an Event Matrix - Frequency matrix with multiple events per user
+
+EventsMatrix=select!(dfUserEvents, Not(:EVENT_TYPE))
+
+# Getting an array of events performed by a user
+to_group_events = names(EventsMatrix[!, Not(:USER_ID)])
+
+# Grouping a single user with the sum of the events carried out
+frequencyEventsMatrix=
+    combine(
+            groupby(EventsMatrix, :USER_ID), 
+            to_group_events .=> sum .=> to_group_events
+    )
+
+# Organizing the frequency matrix of events by user identifier
+frequencyEventsMatrix=sort!(frequencyEventsMatrix, [:USER_ID])
+
+# Generating csv with the frequency matrix events
+createFrequencyEventsMatrixCSV(frequencyEventsMatrix)
+
+# Create frequency event matrix not users - (Going to use in normalization )
+frequencyEventsDataFrameWithoutUsers=frequencyEventsMatrix[!, Not(:USER_ID)]
+
+createFrequencyEventsMatrixNotUsersCSV(frequencyEventsDataFrameWithoutUsers)
