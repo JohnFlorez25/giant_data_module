@@ -18,10 +18,5 @@ X = Matrix(convert(Array{Float64}, normalizeData ))
 tfn = TSNE(n_components=2) #,perplexity=20.0,early_exaggeration=50)
 dimensionality_reduction_data = tfn.fit_transform(X);
 
-println(
-    "Array{Float32,2}",
-    typeof(dimensionality_reduction_data)
-)
-
 #Export in CSV the dimensionality Reduction data
 createDimensionalityReductionDataCSV(dimensionality_reduction_data)
