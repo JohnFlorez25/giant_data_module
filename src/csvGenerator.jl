@@ -29,3 +29,14 @@ function createNormalizationFrequencyMatrixCSV(
             )
     CSV.write(path, DataFrame(normalizeFrequencyMatrixEvents))
 end
+
+function createDimensionalityReductionDataCSV(
+    dimensionality_reduction_data::Array{Float32,2})
+    path = joinpath(
+                    @__DIR__, 
+                    "..", 
+                    "data", 
+                    "dimensionality_reduction_data.csv"
+            )
+    CSV.write(path, DataFrame(dimensionality_reduction_data))
+end

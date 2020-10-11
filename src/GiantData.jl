@@ -11,13 +11,13 @@ using MultivariateStats
 using LinearAlgebra
 using Distances
 using ParallelKMeans
+using ScikitLearn
 # using Clustering
 # using UMAP
 # using Makie
 # using XLSX
 # using VegaDataset
 # using RDatasets
-# using ScikitLearn
 # using MLBase
 #gr()
 
@@ -26,4 +26,4 @@ using ParallelKMeans
 include("dataPreprocessing.jl")
 include("dataNormalization.jl")
 include("optimalNumberClusters.jl")
-
+include("dimensionalityReduction.jl")
