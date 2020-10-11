@@ -34,7 +34,7 @@ eventsDataFrame[!,:eventname]=
 dfUserEvents = DataFrame(USER_ID = eventsDataFrame[!,:userid], EVENT_TYPE = convert(Array{Int64}, eventsDataFrame[!,:eventname]) )
 
 # Calling graphic createEventsUsersGraphic of graphicsGenerator
-createEventsUsersGraphic(dfUserEvents)
+createEventsUsersPlot(dfUserEvents)
 
 #=
     One Hot Encoding
@@ -70,4 +70,5 @@ createFrequencyEventsMatrixCSV(frequencyEventsMatrix)
 # Create frequency event matrix not users - (Going to use in normalization )
 frequencyEventsDataFrameWithoutUsers=frequencyEventsMatrix[!, Not(:USER_ID)]
 
+#Export in CSV the frequency events matrix without users
 createFrequencyEventsMatrixNotUsersCSV(frequencyEventsDataFrameWithoutUsers)

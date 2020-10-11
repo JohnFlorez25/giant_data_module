@@ -19,5 +19,6 @@ normalizeFrequencyMatrixEvents=
                             dt, 
                             Matrix(frequencyMatrixEvents)
                         )
-
+                        
+# Export in CSV the normalize data
 createNormalizationFrequencyMatrixCSV(normalizeFrequencyMatrixEvents)

@@ -10,6 +10,7 @@ using StatsBase
 using MultivariateStats
 using LinearAlgebra
 using Distances
+using ParallelKMeans
 # using Clustering
 # using UMAP
 # using Makie
@@ -24,4 +25,5 @@ using Distances
 
 include("dataPreprocessing.jl")
 include("dataNormalization.jl")
+include("optimalNumberClusters.jl")
 
