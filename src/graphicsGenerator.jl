@@ -18,7 +18,8 @@ function createEventsUsersPlot(dfUserEvents::DataFrame)
 end
   
 # Ploting Clusters' Optimal Number using elbow method
-function createClusterOptimalNumberPlot(x::UnitRange{Int64},y::Array{Float64,1})
+function createClusterOptimalNumberPlot(
+    typeOfData,x::UnitRange{Int64},y::Array{Float64,1})
     plot(
         x, 
         y, 
@@ -32,7 +33,11 @@ function createClusterOptimalNumberPlot(x::UnitRange{Int64},y::Array{Float64,1})
         size=(800,400)
     )
     # Path to save the images
-    path = joinpath(@__DIR__, "..", "images", "cluster-optimal-number.png")
+    if typeOfData == 1
+        path = joinpath(@__DIR__, "..", "images", "cluster-optimal-number-high.png")
+    elseif typeOfData == 2
+        path = joinpath(@__DIR__, "..", "images", "cluster-optimal-number-low.png")
+    end
     # Saved png format
     savefig(path)  
 end

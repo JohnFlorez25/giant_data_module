@@ -25,5 +25,6 @@ using ScikitLearn
 
 include("dataPreprocessing.jl")
 include("dataNormalization.jl")
-include("optimalNumberClusters.jl")
 include("dimensionalityReduction.jl")
+include("optimalNumberClusters.jl")
+
