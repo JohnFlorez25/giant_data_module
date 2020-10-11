@@ -13,7 +13,6 @@ X = Matrix(convert(Array{Float64}, normalizeData ))
 x = 2:25
 
 # Single Thread Implementation of Lloyd's Algorithm
-# Single Thread Implementation of Lloyd's Algorithm
 y = [ParallelKMeans.kmeans(Matrix(X)', i, n_threads=1; tol=1e-6, max_iters=300, verbose=false).totalcost for i = 2:25]
 
 createClusterOptimalNumberPlot(x,y)
