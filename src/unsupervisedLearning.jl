@@ -17,7 +17,7 @@ pathLowDimensions = joinpath(@__DIR__, "..", "data", "dimensionality_reduction_d
 CLUSTER_NUMBER = 4
 
 # ------- K-MEANS CLUSTERING ---------
-function kmeans_clustering(typeOfData::Int64,path::String)
+function kmeans_clustering(path::String)
     # Define data in a Linear Algebra Matrix
     X = convertDataFrameToMatrix(path)
     # Processing kmeans clustering
@@ -30,11 +30,11 @@ function kmeans_clustering(typeOfData::Int64,path::String)
         makeunique=true
         )
     # Create a CSV with the kmeans clustering results
-    createClusteringResultsCSV(typeOfData, dataFrameUsersWithEvents)
+    createClusteringResultsCSV(dataFrameUsersWithEvents)
 end
 
 # ------- K-MEDOIDS CLUSTERING ---------
-function kmedoids_clustering(typeOfData::Int64,path::String)
+function kmedoids_clustering(path::String)
     # Define data in a Linear Algebra Matrix
     X = convertDataFrameToMatrix(path)
     # Define distance for the kmedois algorithm 
@@ -49,11 +49,11 @@ function kmedoids_clustering(typeOfData::Int64,path::String)
         makeunique=true
         )
     # Create a CSV with the kmeans clustering results
-    createClusteringResultsCSV(typeOfData, dataFrameUsersWithEvents)
+    createClusteringResultsCSV(dataFrameUsersWithEvents)
 end
 
 # ------- HIERARCHICAL CLUSTERING ---------
-function hierarchical_clustering(typeOfData::Int64,path::String)
+function hierarchical_clustering(path::String)
     # Define data in a Linear Algebra Matrix
     X = convertDataFrameToMatrix(path)
     # Define distance for the kmedois algorithm 
@@ -69,11 +69,11 @@ function hierarchical_clustering(typeOfData::Int64,path::String)
         makeunique=true
         )
     # Create a CSV with the kmeans clustering results
-    createClusteringResultsCSV(typeOfData, dataFrameUsersWithEvents)
+    createClusteringResultsCSV(dataFrameUsersWithEvents)
 end
 
 # ------- FUZZY C-MEANS CLUSTERING ---------
-function fuzzy_c_means_clustering(typeOfData::Int64,path::String)
+function fuzzy_c_means_clustering(path::String)
     # Define data in a Linear Algebra Matrix
     X = convertDataFrameToMatrix(path)
     # Processing fuzzy_c_means clustering
@@ -94,16 +94,21 @@ function fuzzy_c_means_clustering(typeOfData::Int64,path::String)
         makeunique=true
         )
     # Create a CSV with the kmeans clustering results
-    createClusteringResultsCSV(typeOfData, dataFrameUsersWithEvents)
+    createClusteringResultsCSV(dataFrameUsersWithEvents)
 end
 
 # Execute diferents unsupervised learning methods 
-# with high dimension data
-kmeans_clustering(1,pathHighDimensions)
-kmedoids_clustering(1,pathHighDimensions)
-hierarchical_clustering(1,pathHighDimensions)
-fuzzy_c_means_clustering(1,pathHighDimensions)
 
-# kmeans_clustering(2,pathLowDimensions)
-# kmedoids_clustering(2,pathLowDimensions)
+# with high  dimension data
+kmeans_clustering(pathHighDimensions)
+kmedoids_clustering(pathHighDimensions)
+hierarchical_clustering(pathHighDimensions)
+fuzzy_c_means_clustering(pathHighDimensions)
+
+# with low dimension data
+kmeans_clustering(pathLowDimensions)
+kmedoids_clustering(pathLowDimensions)
+hierarchical_clustering(pathLowDimensions)
+fuzzy_c_means_clustering(pathLowDimensions)
+
 

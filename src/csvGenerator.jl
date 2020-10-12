@@ -41,26 +41,12 @@ function createDimensionalityReductionDataCSV(
     CSV.write(path, DataFrame(dimensionality_reduction_data))
 end
 
-function createClusteringResultsCSV(
-    typeOfData::Int64,
-    dataClustering::DataFrame)
-
-    if typeOfData == 1
-        path = joinpath(
-                        @__DIR__, 
-                        "..", 
-                        "data", 
-                        "high_data_clustering_giant_events.csv"
-                )
-    elseif typeOfData == 2
-        path = joinpath(
-                        @__DIR__, 
-                        "..", 
-                        "data", 
-                        "low_data_clustering_giant_events.csv"
-                )
-    end
-
+function createClusteringResultsCSV(dataClustering::DataFrame)
+    path = joinpath(
+                    @__DIR__, 
+                    "..", 
+                    "data", 
+                    "data_clustering_giant_events.csv"
+            )
     CSV.write(path, dataClustering)
-    
 end
