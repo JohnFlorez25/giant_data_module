@@ -12,7 +12,7 @@ using LinearAlgebra
 using Distances
 using ParallelKMeans
 using ScikitLearn
-# using Clustering
+using Clustering
 # using UMAP
 # using Makie
 # using XLSX
@@ -23,9 +23,9 @@ using ScikitLearn
 
 ## source_files
 
-# include("dataPreprocessing.jl")
-# include("dataNormalization.jl")
-# include("dimensionalityReduction.jl")
-# include("optimalNumberClusters.jl")
+include("dataPreprocessing.jl")
+include("dataNormalization.jl")
+include("dimensionalityReduction.jl")
+include("optimalNumberClusters.jl")
 include("unsupervisedLearning.jl")
 

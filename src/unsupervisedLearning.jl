@@ -7,18 +7,16 @@ pathHighDimensions = joinpath(@__DIR__, "..", "data", "normalize_data_frequency_
 # Path with the CSV to obtain the Low Dimensionality Data
 pathLowDimensions = joinpath(@__DIR__, "..", "data", "dimensionality_reduction_data.csv")
 
-
 CLUSTER_NUMBER = 4
 
+# ------- K-MEANS CLUSTERING ---------
 function kmeans_clustering(typeOfData::Int64,path::String)
     # Define obtain Data in DataFame
     data= DataFrame(CSV.File(path))
     # Define data in a Linear Algebra Matrix
     X = Matrix(convert(Array{Float64}, data ))
     # Processing kmeans clustering
-    C = kmeans(Matrix(X)', 
-        CLUSTER_NUMBER
-        )
+    C = kmeans(Matrix(X)', CLUSTER_NUMBER)
     # Add column with the kmeans clustering results
     insertcols!(
         data,
@@ -30,5 +28,29 @@ function kmeans_clustering(typeOfData::Int64,path::String)
     createKmeansClusteringResultsCSV(typeOfData, data)
 end
 
+# ------- K-MEDOIDS CLUSTERING ---------
+function kmedoids_clustering(typeOfData::Int64,path::String)
+    # Define obtain Data in DataFame
+    data= DataFrame(CSV.File(path))
+    # Define data in a Linear Algebra Matrix
+    xmatrix = Matrix(convert(Array{Float64}, data ))'
+    D = pairwise(Euclidean(), xmatrix, xmatrix, dims=2)
+    # Processing kmeans clustering
+    K = kmedoids(D, CLUSTER_NUMBER)
+    # Add column with the kmedoids clustering results
+    insertcols!(
+        data,
+        1,
+        :kmedoids_4=>K.assignments, 
+        makeunique=true
+        )
+    # Create a CSV with the kmeans clustering results
+    createKmedoidsClusteringResultsCSV(typeOfData, data)
+end
+
+
 kmeans_clustering(1,pathHighDimensions)
 kmeans_clustering(2,pathLowDimensions)
+
+kmedoids_clustering(1,pathHighDimensions)
+kmedoids_clustering(2,pathLowDimensions)

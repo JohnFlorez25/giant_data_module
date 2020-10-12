@@ -61,3 +61,24 @@ function createKmeansClusteringResultsCSV(
     end
     CSV.write(path, kmeansDataClustering)
 end
+
+function createKmedoidsClusteringResultsCSV(
+    typeOfData::Int64,
+    kmedoidsDataClustering::DataFrame)
+    if typeOfData == 1
+        path = joinpath(
+                        @__DIR__, 
+                        "..", 
+                        "data/kmedoids_groups/high_dimension", 
+                        "kmedoids_data_clustering_high.csv"
+                )
+    elseif typeOfData == 2
+        path = joinpath(
+                        @__DIR__, 
+                        "..", 
+                        "data/kmedoids_groups/low_dimension", 
+                        "kmedoids_data_clustering_low.csv"
+                )
+    end
+    CSV.write(path, kmedoidsDataClustering)
+end
