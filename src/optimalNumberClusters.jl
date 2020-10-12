@@ -1,3 +1,4 @@
+include("convertDataFrameToMatrix.jl")
 include("graphicsGenerator.jl")
 
 # Path with the CSV to obtain the Normalize Data 
@@ -7,10 +8,8 @@ pathHighDimensions = joinpath(@__DIR__, "..", "data", "normalize_data_frequency_
 pathLowDimensions = joinpath(@__DIR__, "..", "data", "dimensionality_reduction_data.csv")
 
 function elbowMethodCluster(typeOfData::Int64,path::String)
-    # Define obtain Data in DataFame
-    data= DataFrame(CSV.File(path))
     # Define data in a Linear Algebra Matrix
-    X = Matrix(convert(Array{Float64}, data ))
+    X = convertDataFrameToMatrix(path)
     # Define de number of clusters
     x = 2:25
     # Single Thread Implementation of Lloyd's Algorithm

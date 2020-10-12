@@ -1,3 +1,4 @@
+include("convertDataFrameToMatrix.jl")
 include("csvGenerator.jl")
 
 # Path with the CSV to obtain the Normalize Data 
@@ -7,11 +8,8 @@ path = joinpath(
         "normalize_data_frequency_matrix_giant.csv"
     )
 
-# Define Normalize Data in a DataFrame
-normalizeData = DataFrame(CSV.File(path))
-
-# Define Normalize Data in a Linear Algebra Matrix
-X = Matrix(convert(Array{Float64}, normalizeData ))
+# Define data in a Linear Algebra Matrix
+X = convertDataFrameToMatrix(path)
 
 # Applying Dimensionality Reduction with TSNE
 @sk_import manifold : TSNE

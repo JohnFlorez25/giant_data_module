@@ -41,44 +41,26 @@ function createDimensionalityReductionDataCSV(
     CSV.write(path, DataFrame(dimensionality_reduction_data))
 end
 
-function createKmeansClusteringResultsCSV(
+function createClusteringResultsCSV(
     typeOfData::Int64,
-    kmeansDataClustering::DataFrame)
-    if typeOfData == 1
-        path = joinpath(
-                        @__DIR__, 
-                        "..", 
-                        "data/kmeans_groups/high_dimension", 
-                        "kmeans_data_clustering_high.csv"
-                )
-    elseif typeOfData == 2
-        path = joinpath(
-                        @__DIR__, 
-                        "..", 
-                        "data/kmeans_groups/low_dimension", 
-                        "kmeans_data_clustering_low.csv"
-                )
-    end
-    CSV.write(path, kmeansDataClustering)
-end
+    dataClustering::DataFrame)
 
-function createKmedoidsClusteringResultsCSV(
-    typeOfData::Int64,
-    kmedoidsDataClustering::DataFrame)
     if typeOfData == 1
         path = joinpath(
                         @__DIR__, 
                         "..", 
-                        "data/kmedoids_groups/high_dimension", 
-                        "kmedoids_data_clustering_high.csv"
+                        "data", 
+                        "high_data_clustering_giant_events.csv"
                 )
     elseif typeOfData == 2
         path = joinpath(
                         @__DIR__, 
                         "..", 
-                        "data/kmedoids_groups/low_dimension", 
-                        "kmedoids_data_clustering_low.csv"
+                        "data", 
+                        "low_data_clustering_giant_events.csv"
                 )
     end
-    CSV.write(path, kmedoidsDataClustering)
+
+    CSV.write(path, dataClustering)
+    
 end
