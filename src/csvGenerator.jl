@@ -40,3 +40,24 @@ function createDimensionalityReductionDataCSV(
             )
     CSV.write(path, DataFrame(dimensionality_reduction_data))
 end
+
+function createKmeansClusteringResultsCSV(
+    typeOfData::Int64,
+    kmeansDataClustering::DataFrame)
+    if typeOfData == 1
+        path = joinpath(
+                        @__DIR__, 
+                        "..", 
+                        "data/kmeans_groups/high_dimension", 
+                        "kmeans_data_clustering_high.csv"
+                )
+    elseif typeOfData == 2
+        path = joinpath(
+                        @__DIR__, 
+                        "..", 
+                        "data/kmeans_groups/low_dimension", 
+                        "kmeans_data_clustering_low.csv"
+                )
+    end
+    CSV.write(path, kmeansDataClustering)
+end

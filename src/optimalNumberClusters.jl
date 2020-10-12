@@ -3,7 +3,7 @@ include("graphicsGenerator.jl")
 # Path with the CSV to obtain the Normalize Data 
 pathHighDimensions = joinpath(@__DIR__, "..", "data", "normalize_data_frequency_matrix_giant.csv")
 
-# Path with the CSV to obtain the Normalize Data 
+# Path with the CSV to obtain the Low Dimensionality Data
 pathLowDimensions = joinpath(@__DIR__, "..", "data", "dimensionality_reduction_data.csv")
 
 function elbowMethodCluster(typeOfData::Int64,path::String)
