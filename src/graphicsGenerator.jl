@@ -62,3 +62,30 @@ function createActionCountPlot(actionDataFrameCount::DataFrame)
     # Saved png format
     savefig(path)   
 end
+
+# Ploting Connections Per Day
+function createConnectionPerDayPlot(
+            topSize::Int64,
+            groupbyLoginAction::DataFrame
+        )
+    x = 1:topSize; 
+    y = groupbyLoginAction[!,:action_sum]; # These are the plotting data
+    plot(
+        x, 
+        y, 
+        title = "Connections per day", 
+        xlabel = "Day", 
+        ylabel = "Connection's Number", 
+        lw = 3, 
+        marker=:circle, 
+        ms=5, 
+        mc=:orange,
+        legend=false, 
+        size=(1100,300)
+    )
+    
+    # Path to save the images
+    path = joinpath(@__DIR__, "..", "images", "connection-per-day.png")
+    # Saved png format
+    savefig(path)   
+end

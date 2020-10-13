@@ -74,3 +74,32 @@ actionDataFrameCount=
 # Calling graphic createActionByUserPlot of graphicsGenerator
 createActionCountPlot(actionDataFrameCount)
 
+
+# ---------- OBTAIN CONNECTIONS PER DAY --------
+
+# Converting variables to String type of the featureDataFrame
+featureDataFrame[
+        !,
+        [:year, :month, :day]
+        ]=convert(
+                Array{String}, 
+                eventsDataFrame[!,[:year, :month, :day]]
+        );
+
+# Grouping users according to the action taken
+groupbyLogin = groupby(featureDataFrame, [:month, :day, :action]);
+
+# Obtaining the number of shares according to their type
+loginDataFrameCount=combine(groupbyLogin, :action => sum);
+
+# Grouping by action performed
+groupbyLoginAction = groupby(loginDataFrameCount, :action);
+
+# Selecting the maximum value of columns of group 3 (action loggedin)
+topsize=size(groupbyLoginAction[3],1);
+
+# Convert Group by Login Data to DataFrame
+groupbyLoginPerDay = convert(DataFrame,groupbyLoginAction[3] )
+
+# Calling graphic createActionByUserPlot of graphicsGenerator
+createConnectionPerDayPlot(topsize, groupbyLoginPerDay)

@@ -1,3 +1,5 @@
+using ParallelKMeans
+
 include("convertDataFrameToMatrix.jl")
 include("graphicsGenerator.jl")
 

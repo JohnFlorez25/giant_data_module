@@ -10,10 +10,10 @@ using StatsBase
 using MultivariateStats
 using LinearAlgebra
 using Distances
-using ParallelKMeans
 using ScikitLearn
-using Clustering
 using Dates
+# using ParallelKMeans
+using Clustering
 # using UMAP
 # using Makie
 # using XLSX
@@ -24,9 +24,9 @@ using Dates
 
 ## source_files
 include("featureEngineering.jl")
-# include("dataPreprocessing.jl")
-# include("dataNormalization.jl")
-# include("dimensionalityReduction.jl")
-# include("optimalNumberClusters.jl")
-# include("unsupervisedLearning.jl")
+include("dataPreprocessing.jl")
+include("dataNormalization.jl")
+include("dimensionalityReduction.jl")
+include("optimalNumberClusters.jl")
+include("unsupervisedLearning.jl")
 

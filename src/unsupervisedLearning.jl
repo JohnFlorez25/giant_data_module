@@ -21,7 +21,7 @@ function kmeans_clustering(path::String)
     # Define data in a Linear Algebra Matrix
     X = convertDataFrameToMatrix(path)
     # Processing kmeans clustering
-    C = kmeans(X', CLUSTER_NUMBER)
+    C = ParallelKMeans.kmeans(X', CLUSTER_NUMBER)
     # Add column with the kmeans clustering results
     insertcols!(
         dataFrameUsersWithEvents,
@@ -39,7 +39,7 @@ function kmedoids_clustering(path::String)
     X = convertDataFrameToMatrix(path)
     # Define distance for the kmedois algorithm 
     D = pairwise(Euclidean(), X', X', dims=2)
-    # Processing kmeans clustering
+    # Processing kmedoids clustering
     K = kmedoids(D, CLUSTER_NUMBER)
     # Add column with the kmedoids clustering results
     insertcols!(
@@ -48,7 +48,7 @@ function kmedoids_clustering(path::String)
         :kmedoids=>K.assignments, 
         makeunique=true
         )
-    # Create a CSV with the kmeans clustering results
+    # Create a CSV with the kmedoids clustering results
     createClusteringResultsCSV(dataFrameUsersWithEvents)
 end
 
@@ -56,7 +56,7 @@ end
 function hierarchical_clustering(path::String)
     # Define data in a Linear Algebra Matrix
     X = convertDataFrameToMatrix(path)
-    # Define distance for the kmedois algorithm 
+    # Define distance for the hierarchical algorithm 
     D = pairwise(Euclidean(), X', X', dims=2)
     # Processing hierarchical clustering
     K = hclust(D, linkage=:ward)
@@ -68,7 +68,7 @@ function hierarchical_clustering(path::String)
         :hclust=>L, 
         makeunique=true
         )
-    # Create a CSV with the kmeans clustering results
+    # Create a CSV with the hierarchical  clustering results
     createClusteringResultsCSV(dataFrameUsersWithEvents)
 end
 
@@ -93,7 +93,7 @@ function fuzzy_c_means_clustering(path::String)
         :fuzzy=>t, 
         makeunique=true
         )
-    # Create a CSV with the kmeans clustering results
+    # Create a CSV with the fuzzy_c_means clustering results
     createClusteringResultsCSV(dataFrameUsersWithEvents)
 end
 
