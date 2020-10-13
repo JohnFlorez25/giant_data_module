@@ -41,3 +41,24 @@ function createClusterOptimalNumberPlot(
     # Saved png format
     savefig(path)  
 end
+
+# Ploting Actions most performed by users
+function createActionCountPlot(actionDataFrameCount::DataFrame)
+    x=actionDataFrameCount[1:4,:action_name]
+    y=actionDataFrameCount[1:4,:action_sum]
+    plot(
+        x, 
+        y, 
+        seriestype = :bar, 
+        size=(1100,300), 
+        title = "Actions most performed by users", 
+        legend=false, 
+        orientation=:h, 
+        yflip=true
+    )
+    
+    # Path to save the images
+    path = joinpath(@__DIR__, "..", "images", "action-count-iteration.png")
+    # Saved png format
+    savefig(path)   
+end
