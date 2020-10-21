@@ -89,3 +89,31 @@ function createConnectionPerDayPlot(
     # Saved png format
     savefig(path)   
 end
+
+# Ploting Actions most performed by users
+function createHighestEventsExecuted(userByEventsSumDataFrame::DataFrame)
+    x=userByEventsSumDataFrame[!,:USER_ID]
+    y=userByEventsSumDataFrame[!,:SUM_EVENTS]
+    plot(
+        x, 
+        y, 
+        seriestype = :bar, 
+        size=(700,300), 
+        title = "Highest number of events executed", 
+        xlabel = "user id", 
+        ylabel = "events sum", 
+        label = ["Events" "Events"] 
+    )
+    media=floor(Int,mean(userByEventsSumDataFrame[!,:SUM_EVENTS]))
+    hline!(
+        [media], 
+        color = "green", 
+        linestyle = :dash, 
+        linewidth = 4,
+        label = ["Mean" "Mean"]
+    )
+    # Path to save the images
+    path = joinpath(@__DIR__, "..", "images", "highest-events-executed.png")
+    # Saved png format
+    savefig(path)   
+end
