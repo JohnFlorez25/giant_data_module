@@ -50,3 +50,13 @@ function createClusteringResultsCSV(dataClustering::DataFrame)
             )
     CSV.write(path, dataClustering)
 end
+
+function createFeatureEngineeringDataCSV(dataFeatureEngineering::DataFrame)
+    path = joinpath(
+                    @__DIR__, 
+                    "..", 
+                    "data", 
+                    "data_giant_feature_engineering.csv"
+            )
+    CSV.write(path, dataFeatureEngineering)
+end

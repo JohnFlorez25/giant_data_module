@@ -23,9 +23,10 @@ using Clustering
 #gr()
 
 ## source_files
-include("featureEngineering.jl")
+include("dataFeatureEngineering.jl")
 include("dataPreprocessing.jl")
 include("dataNormalization.jl")
+include("featureEngineering.jl")
 include("dimensionalityReduction.jl")
 include("optimalNumberClusters.jl")
 include("unsupervisedLearning.jl")
