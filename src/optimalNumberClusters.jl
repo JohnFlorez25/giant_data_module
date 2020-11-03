@@ -1,3 +1,5 @@
+# Script to obtain the optimal number of cluster using ParallelKMeans
+
 using ParallelKMeans
 
 include("convertDataFrameToMatrix.jl")

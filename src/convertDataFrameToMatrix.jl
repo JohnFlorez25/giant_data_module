@@ -1,3 +1,5 @@
+# Generla function to convert data frame to matrix values
+
 function convertDataFrameToMatrix(path::String)
     # Define obtain Data in DataFame
     data= DataFrame(CSV.File(path))

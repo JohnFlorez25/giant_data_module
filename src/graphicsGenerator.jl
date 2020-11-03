@@ -1,3 +1,6 @@
+
+# *** GENERAL SCRIPT TO GENERATE PLOTS AND GRAPHICS ****
+
 # Ploting Users and their Events did in GIANT 
 function createEventsUsersPlot(dfUserEvents::DataFrame)
     scatter(

@@ -4,7 +4,7 @@ include("csvGenerator.jl")
 # Path with CSV Events GIANT info to processing
 path = joinpath(@__DIR__, "..", "data", "events_data_09_10_2020.csv")
 
-# Define events Data Frame
+# Defining events Data Frame
 eventsDataFrame = DataFrame(CSV.File(path))
 
 # Converting variables to String type

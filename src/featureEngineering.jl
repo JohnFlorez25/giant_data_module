@@ -4,13 +4,13 @@ include("csvGenerator.jl")
 # Path with CSV Feature GIANT info to processing
 path = joinpath(@__DIR__, "..", "data", "data_giant_feature_engineering.csv")
 
-# Define feacture Data Frame
+# Defining feacture Data Frame
 featureDataFrame = DataFrame(CSV.File(path))
 
 # Path with CSV Events GIANT info to processing
 path = joinpath(@__DIR__, "..", "data", "frequency_events_users_giant.csv")
 
-# Define events Data Frame
+# Defining events Data Frame
 eventsDataFrame = DataFrame(CSV.File(path))
 
 # ---------- OBTAIN ACTION BY USER --------

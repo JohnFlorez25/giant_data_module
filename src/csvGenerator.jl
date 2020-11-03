@@ -1,3 +1,5 @@
+# ******General script to generate CSV files******
+
 function createFrequencyEventsMatrixCSV(frequencyEventsMatrix::DataFrame)
     path = joinpath(
                     @__DIR__, 

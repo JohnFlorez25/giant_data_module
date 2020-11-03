@@ -1,3 +1,4 @@
+# ***** Principal script to charge the package and execute the code ****
 # Packages we will use 
 using DataFrames
 using JSON

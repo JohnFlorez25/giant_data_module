@@ -67,8 +67,8 @@ frequencyEventsMatrix=sort!(frequencyEventsMatrix, [:USER_ID])
 # Generating csv with the frequency matrix events
 createFrequencyEventsMatrixCSV(frequencyEventsMatrix)
 
-# Create frequency event matrix not users - (Going to use in normalization )
+# Creating frequency event matrix not users - (Going to use in normalization )
 frequencyEventsDataFrameWithoutUsers=frequencyEventsMatrix[!, Not(:USER_ID)]
 
-#Export in CSV the frequency events matrix without users
+#Exporting in CSV the frequency events matrix without users
 createFrequencyEventsMatrixNotUsersCSV(frequencyEventsDataFrameWithoutUsers)

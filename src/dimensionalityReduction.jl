@@ -1,3 +1,5 @@
+# *****Dimensionality Reduction using T-SNE algorithm****
+
 include("convertDataFrameToMatrix.jl")
 include("csvGenerator.jl")
 
