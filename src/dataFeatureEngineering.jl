@@ -2,7 +2,7 @@ include("graphicsGenerator.jl")
 include("csvGenerator.jl")
 
 # Path with CSV Events GIANT info to processing
-path = joinpath(@__DIR__, "..", "data", "events_data_09_10_2020.csv")
+path = joinpath(@__DIR__, "..", "data", "events_30_10_2020.csv")
 
 # Defining events Data Frame
 eventsDataFrame = DataFrame(CSV.File(path))

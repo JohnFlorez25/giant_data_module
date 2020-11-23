@@ -16,7 +16,7 @@ pathHighDimensions = joinpath(@__DIR__, "..", "data", "normalize_data_frequency_
 # Path with the CSV to obtain the Low Dimensionality Data
 pathLowDimensions = joinpath(@__DIR__, "..", "data", "dimensionality_reduction_data.csv")
 
-CLUSTER_NUMBER = 4
+CLUSTER_NUMBER = 5
 
 # ------- K-MEANS CLUSTERING ---------
 function kmeans_clustering(path::String)
@@ -112,5 +112,3 @@ kmeans_clustering(pathLowDimensions)
 kmedoids_clustering(pathLowDimensions)
 hierarchical_clustering(pathLowDimensions)
 fuzzy_c_means_clustering(pathLowDimensions)
-
-

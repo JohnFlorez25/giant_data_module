@@ -19,4 +19,4 @@ tfn = TSNE(n_components=2) #,perplexity=20.0,early_exaggeration=50)
 dimensionality_reduction_data = tfn.fit_transform(X);
 
 #Export in CSV the dimensionality Reduction data
-createDimensionalityReductionDataCSV(dimensionality_reduction_data)
+createDimensionalityReductionDataCSV(dimensionality_reduction_data);
